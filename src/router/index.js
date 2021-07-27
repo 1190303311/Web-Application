@@ -56,6 +56,35 @@ export const constantRoutes = [
   },
 
   {
+    path: '/shopping',
+    component: Layout,
+    redirect: '/shopping/table',
+    name: 'shopping',
+    meta: { title: '商品', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'goods',
+        name: 'goods',
+        component: () => import('@/views/myviews/goods'),
+        meta: { title: '浏览', icon: 'table' }
+      },
+      {
+        path: 'add',
+        name: 'add',
+        component: () => import('@/views/myviews/add'),
+        meta: { title: '添加', icon: 'tree' }
+      },
+      {
+        path: 'add/:id',
+        name: 'a修改',
+        component: () => import('@/views/myviews/add'),
+        meta: { title: '修改', icon: 'tree' },
+        hidden:true
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
