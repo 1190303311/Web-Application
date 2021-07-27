@@ -160,6 +160,39 @@ export const constantRoutes = [
     ]
   },
 
+//管理会员信息，删除和修改
+{
+  path: '/manage',
+  component: Layout,
+  redirect: '/manage/index',
+  name: '用户管理',
+  meta: { title: '用户管理', icon: 'el-icon-s-help' },
+  children: [
+    {
+      path: 'index',
+      name: '删除编辑',
+      component: () => import('@/views/manage/index'),
+      meta: { title: '用户管理', icon: 'table' }
+    },
+
+    {
+      path: 'search',
+      name: '会员信息',
+      component: () => import('@/views/manage/search'),
+      meta: { title: '会员信息', icon: 'table' }
+    },
+
+    {
+      // 跳转时,需要传入id
+      path: 'change/:id',
+      name: '修改会员信息',
+      component: () => import('@/views/manage/change'),
+      meta: { title: '修改会员信息', icon: 'tree' },
+      hidden:true
+    }
+  ]
+},
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
